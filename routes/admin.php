@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 
         Route::get('/',[HomeController::class,'index']);
         Route::resource('articles',ArticleController::class);
+        Route::post('/upload',[ArticleController::class,'upload'])->name('articles.upload');
         Route::get('articles/details/{id}',[ArticleController::class,'details'])->name('articles.details');
         Route::resource('users',UserController::class);
 

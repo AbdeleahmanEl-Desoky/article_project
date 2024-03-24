@@ -25,3 +25,8 @@
 
 <!-- Custom Theme Style -->
 <link href="{{ asset('dashboard/build/css/custom.min.css') }}" rel="stylesheet">
+<style>
+    .ck-editor__editable_inline {
+        min-height: 300px;
+    }
+    </style>
