@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 
+Route::get('article/{title}/{id}', [HomeController::class,'article'])->name('article');
+
+
+
 Route::get('about', [AboutController::class,'index'])->name('about');
 Route::get('listing', [ListingController::class,'index'])->name('listing');
 Route::get('testimonials', [TestimonialController::class,'index'])->name('testimonials');

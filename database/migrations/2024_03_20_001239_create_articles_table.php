@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('keywords_en')->nullable();
             $table->string('description_en')->nullable();
             $table->string('url_en')->nullable();
-            $table->string('google-site-verification_en')->nullable();
-            $table->string('google-title_en')->nullable();
+            $table->string('google_site_verification_en')->nullable();
+            $table->string('google_google_title_en')->nullable();
             $table->timestamps();
         });
     }

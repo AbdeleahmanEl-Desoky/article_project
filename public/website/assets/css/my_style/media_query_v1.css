@@ -1,0 +1,190 @@
+@media (min-width: 100px) and (max-width: 400px) {
+    /* * -------------------------------------------------------------------------------- */
+    /* *                             start style image header                             */
+    /* * -------------------------------------------------------------------------------- */
+
+    .top_header {
+        height: 13rem;
+    }
+
+    .video {
+        display: none;
+    }
+    .carousel-inner{
+        margin-top: 0%;
+    }
+    /* Show image carousel on mobile screens */
+    #carouselExampleIndicators ,.carousel-buttons{
+        display: block !important; /* Use !important to override inline style */
+    }
+
+    /* * -------------------------------------------------------------------------------- */
+    /* *                              end style image header                              */
+    /* * -------------------------------------------------------------------------------- */
+    .carousel-item {
+        /* height: 75%; */
+        margin-top: 11%;
+    }
+    /* .carousel_height_img{
+        height: auto ;
+    } */
+    /* * -------------------------------------------------------------------------------- */
+    /* *                             start style image home page                          */
+    /* * -------------------------------------------------------------------------------- */
+
+    .image_artical {
+        width: 100%;
+        /*height: 100%;*/
+    }
+    .carousel-item img {
+        max-width: 100%;
+    }
+    /* * -------------------------------------------------------------------------------- */
+    /* *                              end style image home page                           */
+    /* * -------------------------------------------------------------------------------- */
+    /* .video {
+        height: 628px;
+    }
+
+    #myVideo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .img_header{
+        width: 55px;
+        height: 50px;
+  } */
+
+  .no-margin-bottom {
+    margin: 0;
+    }
+
+
+  .carousel-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    opacity: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: opacity 1s ease-in-out;
+}
+}
+@media screen and (max-width: 768px) {
+    .wrapper {
+      height: auto;
+      min-height: 100vh;
+      padding-top: 100px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .profile-card-inf__item {
+      padding: 10px 20px;
+      min-width: 120px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .profile-card-social__item {
+      width: 50px;
+      height: 50px;
+      margin: 10px;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .profile-card-social__item:hover {
+      transform: scale(1.2);
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .profile-card-ctr {
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .profile-card__button {
+      min-width: 170px;
+      margin: 15px 25px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .profile-card__button {
+      min-width: inherit;
+      margin: 0;
+      margin-bottom: 16px;
+      width: 100%;
+      max-width: 300px;
+    }
+    .profile-card__button:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .profile-card__button:hover {
+      transform: translateY(-5px);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .profile-card-form {
+      max-width: 90%;
+      height: auto;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .profile-card-form {
+      padding: 20px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .profile-card-form__bottom {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width:991px)
+  {
+    .site-footer [class^=col-]
+    {
+      margin-bottom:30px
+    }
+  }
+  @media (max-width:767px)
+  {
+    .site-footer
+    {
+      padding-bottom:0
+    }
+    .site-footer .copyright-text,.site-footer .social-icons
+    {
+      text-align:center
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .profile-card__img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+  @media (max-width:767px)
+  {
+    .social-icons li.title
+    {
+      display:block;
+      margin-right:0;
+      font-weight:600
+    }
+    .tiko{
+        margin-top: -32%;
+    }
+.sidebar{
+    display: none;
+}
+.post-media .part_one{
+    display: block;
+}
+.top_head{
+    padding: 5px;
+}
+
+  }

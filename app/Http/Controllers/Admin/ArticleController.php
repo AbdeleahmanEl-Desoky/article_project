@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleDescription;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -31,14 +32,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-        if (preg_match('/<img src="([^"]+)"/', $request->description_en, $matches)) {
-            $imageLink = $matches[1];
-            return $imageLink;
-        } else {
-            return "Image link not found";
-        }
-        return $request;
+        Article::create([
+            'title_en'=>$request->title_en,
+            'description_en'=>$request->description_en,
+            'keywords_en'=>$request->keywords_en,
+            'url_en'=>$request->url_en,
+            'google_site_verification_en'=>$request->google_site_verification_en,
+            'google_title_en'=>$request->google_title_en,
+            'image'=>$request->image
+        ]);
 
         return redirect()->route('admin.articles.index');
     }
@@ -60,14 +62,14 @@ class ArticleController extends Controller
 
     }
 
-
-
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
+        $articles = ArticleDescription::where('article_id',$id)->get();
+
+        return view('admin.article.show',compact('articles','id'));
     }
 
     /**
@@ -86,6 +88,8 @@ class ArticleController extends Controller
     public function update(Request $request, string $id)
     {
         Article::findOrFail($id);
+
+        return redirect()->route('admin.articles.index');
     }
 
     /**
@@ -93,7 +97,9 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        $article = Article::findOrFail($id);
-      //  $article->delete();
+       $article = Article::findOrFail($id);
+       $article->delete();
+
+       return redirect()->route('admin.articles.index');
     }
 }

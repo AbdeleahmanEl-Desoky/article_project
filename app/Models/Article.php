@@ -11,4 +11,9 @@ class Article extends Model
     protected $table = 'articles';
     protected $guarded = [];
 
+    public function articleDescriptions()
+    {
+        return $this->hasMany(ArticleDescription::class,'article_id','id');
+    }
+
 }
