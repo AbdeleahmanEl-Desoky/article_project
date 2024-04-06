@@ -1,8 +1,9 @@
 
 @extends('layouts.website.app')
+@stack('css')
 @section('content')
 
-<div class="hero inner-page" style="background-image: url('{{asset('website/images/hero_1_a.jpg')}}');">
+<div class="hero inner-page" style="background-image: url('{{asset('dashboard/build/images/hero_1_a.jpg')}}');">
 
         <div class="container">
           <div class="row align-items-end ">

@@ -17,11 +17,11 @@
 
 
                     <li><a><i class="fa fa-desktop"></i> Site Settings <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{route('admin.contacts.index')}}">Contact US</a></li>
-                            <li><a href="{{route('admin.abouts.index')}}">About US</a></li>
-                            <li><a href="{{route('admin.medias.index')}}">Media</a></li>
-                            <li><a href="{{route('admin.privacy-policy.index')}}">Privacy Policy</a></li>
+                         <ul class="nav child_menu">
+                             <li><a href="{{route('admin.abouts.index')}}">About US</a></li>
+                            <li><a href="{{route('admin.contact.index')}}">Contact US</a></li>
+                            <li><a href="{{route('admin.media.index')}}">Media</a></li>
+                            <li><a href="{{route('admin.privacyBpolicy.index')}}">Privacy Policy</a></li>
                         </ul>
                     </li>
 
