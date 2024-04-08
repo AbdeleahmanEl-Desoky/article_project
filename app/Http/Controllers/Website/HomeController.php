@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\Car;
 use App\Models\Category;
 use App\Models\Comment;
@@ -10,23 +11,25 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->data['articles'] = Article::get();
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-     $cars = Car::orderBy('id', 'DESC')->take(6)->get();
-     $testimonials = Testimonial::orderBy('id', 'DESC')->take(3)->get();
-        return view('website.index',compact('cars','testimonials'));
+        $this->data['article'] = Article::with(['articleDescriptions','articleDescriptions.imageArticleDescriptions'])->first();
+
+        return view('website.manhattan.manhattan',$this->data);
     }
 
-    public function car($id)
+    public function article($title,$id)
     {
-        $car = Car::findOrFail($id);
-        $comments = Comment::where('car_id',$id)->get();
-        $categories = Category::with('cars')->get();
-
-        return view('website.single',compact('car','categories','comments'));
+        $this->data['article'] =Article::where('id',$id)->with(['articleDescriptions','articleDescriptions.imageArticleDescriptions'])->first();
+        return view('website.manhattan.manhattan',$this->data);
     }
 
     public function comment(Request $request)

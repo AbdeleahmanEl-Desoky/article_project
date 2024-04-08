@@ -50,14 +50,14 @@
                       <th class="column-title">Title</th>
                       <th class="column-title no-link last"><span class="nobr">Action</span></th>
                   </thead>
+                  @foreach ($articles as $index=>$article)
                   <tbody>
-                    @foreach ($articles as $index=>$article)
 
                       <td>{{$index+1}}</td>
                       <td >{{$article->title_en}}</td>
                       <td>
                         <div class="row">
-                            <a href="{{route('admin.articles.details',$article->id)}}" class="btn btn-default"><i class="fa fa-edit">create Details</i></a>
+                            <a href="{{route('admin.articles.details.create',$article->id)}}" class="btn btn-default"><i class="fa fa-edit">create Details</i></a>
                             <a href="{{route('admin.articles.show',$article->id)}}" class="btn btn-default"><i class="fa fa-edit">Show</i></a>
                             <a href="{{route('admin.articles.edit',$article->id)}}" class="btn btn-default"><i class="fa fa-edit"> Edit</i></a>
                             <form id="deleteForm" action="{{ route('admin.articles.destroy', $article->id) }}" method="post" style="display: inline-block">
@@ -73,8 +73,8 @@
                             }
                         }
                     </script>
-                    @endforeach
                   </tbody>
+                  @endforeach
                 </table>
               </div>
 

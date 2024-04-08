@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\ArticleDetailsController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MediaController;
@@ -29,7 +30,18 @@ use Illuminate\Support\Facades\Route;
 
         Route::get('/',[HomeController::class,'index']);
         Route::resource('articles',ArticleController::class);
-        Route::get('articles/details/{id}',[ArticleController::class,'details'])->name('articles.details');
+        Route::group(['prefix'=>'articles','as'=>'articles.'],function(){
+            Route::post('upload',[ArticleController::class,'upload'])->name('upload');
+            Route::group(['prefix'=>'details','as'=>'details.'],function(){
+                Route::get('/{id}',[ArticleDetailsController::class,'index'])->name('create');
+                Route::post('store/{id}',[ArticleDetailsController::class,'store'])->name('store');
+                Route::get('show/{id}',[ArticleDetailsController::class,'show'])->name('show');
+                Route::get('edit/{id}',[ArticleDetailsController::class,'edit'])->name('edit');
+                Route::post('update/{id}',[ArticleDetailsController::class,'update'])->name('update');
+                Route::delete('destroy/{id}',[ArticleDetailsController::class,'destroy'])->name('destroy');
+            });
+        });
+
         Route::resource('users',UserController::class);
 
 
