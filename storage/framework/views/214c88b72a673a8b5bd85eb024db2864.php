@@ -1,5 +1,19 @@
-@extends('layouts.admin.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
+<style>
+    .photo-input {
+        margin-bottom: 10px;
+    }
+    .preview-image {
+        max-width: 200px;
+        max-height: 200px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    #imagePreview {
+        display: flex; /* Use flexbox to arrange images horizontally */
+        flex-wrap: wrap; /* Allow images to wrap to the next line */
+    }
+</style>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -12,7 +26,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2> Edit form</h2>
+                        <h2> create form</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -25,117 +39,63 @@
                     <div class="x_content">
                         <br />
 
-                            <form method="POST" action="{{ route('admin.articles.update',$article->id) }}"enctype="multipart/form-data">
-                                @csrf
-                                {{ method_field('put') }}
-
+                            <form method="POST" action="<?php echo e(route('admin.articles.details.update',$id)); ?>"enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label >title <span class="required">*</span></label>
-                                    <input type="text" id="title" name="title_en" value="{{$article->title_en}}"
-                                    placeholder="title"
-                                    class="form-control @error('title') is-invalid @enderror">
-                                    @error('title')
+                                    <label >title_en <span class="required">*</span></label>
+                                    <input type="text" id="title_en" name="title_en" value="<?php echo e($article->title_en); ?>" class="form-control <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <label >keywords en <span class="required">*</span></label>
-                                    <input type="text" id="keywords_en" name="keywords_en" value="{{$article->keywords_en}}"
-                                    placeholder="keyword1, keyword2, keyword3"
-                                    class="form-control @error('keywords_en') is-invalid @enderror">
-                                    @error('keywords_en')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label >url en <span class="required">*</span></label>
-                                    <input type="text" id="url_en" name="url_en" value="{{$article->url_en}}" class="form-control @error('url_en') is-invalid @enderror">
-                                    @error('url_en')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label >google site verification en <span class="required">*</span></label>
-                                    <input type="text" id="google_site_verification_en" name="google_site_verification_en"value="{{$article->google_site_verification_en}}" class="form-control @error('google_site_verification_en') is-invalid @enderror">
-                                    @error('google_site_verification_en')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label>google-title En<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="google_title_en" value="{{$article->google_title_en}}">
-                                    @error('google_title_en')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>image link<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="image" value="{{$article->image}}">
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>image button<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="image_button" value="{{$article->image_button}}">
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>image card<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="image_card" value="{{$article->image_card}}">
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
 
                                 <div class="col-md-12">
-                                    <label>Description en<span class="required">*</span>
+                                    <label>description_en<span class="required">*</span>
                                     </label>
-                                    <textarea class="form-control" id="editor" name="description_en" rows="5">{!! $article->description_en !!}</textarea>
-                                    @error('description_en')
+                                    <textarea class="form-control" id="editor" name="description_en" rows="5"><?php echo $article->description_en; ?></textarea>
+                                    <?php $__errorArgs = ['description_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="cars">Aria:</label>
+                                    <select name="aria"  class="form-control">
+                                      <option value="<?php echo e($article->aria); ?>"> <?php if($article->aria ==1 ): ?> aria <?php else: ?> leave <?php endif; ?></option>
+                                      <option <?php if($article->aria == 1 ): ?> value="0" <?php else: ?> value="1" <?php endif; ?>><?php if($article->aria == 1 ): ?> leave <?php else: ?> aria <?php endif; ?></option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <div class="ln_solid"></div>
                             <div class="item form-group">
                                 <div class="col-md-6 col-sm-6 offset-md-3">
                                     <button type="submit" class="btn btn-success">Submit</button>
@@ -152,6 +112,7 @@
     </div>
 </div>
 
+
 <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/super-build/ckeditor.js"></script>
 
 
@@ -160,7 +121,7 @@
         // Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
         CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
             ckfinder: {
-            uploadUrl: '{{ route('admin.articles.upload').'?_token='.csrf_token() }}',
+            uploadUrl: '<?php echo e(route('admin.articles.upload').'?_token='.csrf_token()); ?>',
             },
             // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
             toolbar: {
@@ -314,7 +275,8 @@
     </script>
 
 
+<?php $__env->stopSection(); ?>
 
-@endsection
 
 
+<?php echo $__env->make('layouts.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Article_new\resources\views/admin/article/details/edit.blade.php ENDPATH**/ ?>

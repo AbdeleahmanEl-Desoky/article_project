@@ -36,10 +36,12 @@ class ArticleController extends Controller
             'title_en'=>$request->title_en,
             'description_en'=>$request->description_en,
             'keywords_en'=>$request->keywords_en,
-            'url_en'=>$request->url_en,
-            'google_site_verification_en'=>$request->google_site_verification_en,
-            'google_title_en'=>$request->google_title_en,
-            'image'=>$request->image
+            'url_en'=> $request->url_en,
+            'google_site_verification_en' => $request->google_site_verification_en,
+            'google_title_en' => $request->google_title_en,
+            'image' => $request->image,
+            'image_card' => $request->image_card,
+            'image_button' => $request->image_button,
         ]);
 
         return redirect()->route('admin.articles.index');
@@ -87,7 +89,9 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Article::findOrFail($id);
+        $article = Article::findOrFail($id);
+
+        $article->update($request->all());
 
         return redirect()->route('admin.articles.index');
     }

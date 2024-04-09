@@ -8,21 +8,13 @@
                     <div class="col-md-2 col-sm-4 img_item">
                         <div class="pb-4">
                             <a class="link_image" href="{{ route('article',[$article->title_en,$article->id]) }}"><img class="img_header"
-                                    src="{{ asset('website/assets/images/header/buttons/Times Square, NYC.jpg') }}"
-                                    alt=""></a>
+                                    src="{{$article->image_button}}"
+                                    alt="zzz"></a>
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
-
-
-
-
-
-
-
-
 
         </div>
 

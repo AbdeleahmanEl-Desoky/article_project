@@ -142,7 +142,7 @@
                                         <li>One World Trade Center New York City</li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                         <div class="col-4">
                             <a href="{{ route('content') }}"> <button type="button" class="btn btn-primary rounded-pill">contact US </button>

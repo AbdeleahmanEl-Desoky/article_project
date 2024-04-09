@@ -1,5 +1,4 @@
-@extends('layouts.admin.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -25,27 +24,55 @@
                     <div class="x_content">
                         <br />
 
-                            <form method="POST" action="{{ route('admin.articles.store') }}"enctype="multipart/form-data">
-                                @csrf
+                            <form method="POST" action="<?php echo e(route('admin.articles.store')); ?>"enctype="multipart/form-data">
+                                <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <label >title <span class="required">*</span></label>
-                                    <input type="text" id="title" name="title_en" class="form-control @error('title') is-invalid @enderror">
-                                    @error('title')
+                                    <input type="text" id="title" name="title_en" class="form-control <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <?php $__errorArgs = ['title'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label >keywords en <span class="required">*</span></label>
-                                    <input type="text" id="keywords_en" name="keywords_en" class="form-control @error('keywords_en') is-invalid @enderror">
-                                    @error('keywords_en')
+                                    <input type="text" id="keywords_en" name="keywords_en" class="form-control <?php $__errorArgs = ['keywords_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <?php $__errorArgs = ['keywords_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
 
@@ -53,22 +80,50 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label >url en <span class="required">*</span></label>
-                                    <input type="text" id="url_en" name="url_en" class="form-control @error('url_en') is-invalid @enderror">
-                                    @error('url_en')
+                                    <input type="text" id="url_en" name="url_en" class="form-control <?php $__errorArgs = ['url_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <?php $__errorArgs = ['url_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label >google site verification en <span class="required">*</span></label>
-                                    <input type="text" id="google_site_verification_en" name="google_site_verification_en" class="form-control @error('google_site_verification_en') is-invalid @enderror">
-                                    @error('google_site_verification_en')
+                                    <input type="text" id="google_site_verification_en" name="google_site_verification_en" class="form-control <?php $__errorArgs = ['google_site_verification_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                    <?php $__errorArgs = ['google_site_verification_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
 
@@ -77,54 +132,52 @@
                                     <label>google-title En<span class="required">*</span>
                                     </label>
                                     <input class="form-control" id="google_title_en" name="google_title_en">
-                                    @error('google_title_en')
+                                    <?php $__errorArgs = ['google_title_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
-
                                 <div class="col-md-6">
                                     <label>image link<span class="required">*</span>
                                     </label>
                                     <input class="form-control" id="google_title_en" name="image">
-                                    @error('image')
+                                    <?php $__errorArgs = ['image'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>image button<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="image_button">
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label>image card<span class="required">*</span>
-                                    </label>
-                                    <input class="form-control" id="google_title_en" name="image_card">
-                                    @error('image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                                 <div class="col-md-12">
                                     <label>Description en<span class="required">*</span>
                                     </label>
                                     <textarea class="form-control" id="editor" name="description_en" rows="5"></textarea>
-                                    @error('description_en')
+                                    <?php $__errorArgs = ['description_en'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong><?php echo e($message); ?></strong>
                                     </span>
-                                @enderror
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
 
@@ -145,7 +198,7 @@
     </div>
 </div>
 
-    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script> --}}
+    
 
 
 
@@ -157,7 +210,7 @@
        // Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
        CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
            ckfinder: {
-           uploadUrl: '{{ route('admin.articles.upload').'?_token='.csrf_token() }}',
+           uploadUrl: '<?php echo e(route('admin.articles.upload').'?_token='.csrf_token()); ?>',
            },
            // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
            toolbar: {
@@ -311,7 +364,9 @@
    </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make('layouts.admin.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Article_new\resources\views/admin/article/create.blade.php ENDPATH**/ ?>

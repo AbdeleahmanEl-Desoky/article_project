@@ -1,31 +1,29 @@
-@extends('website.layout.app')
-
-@section('title')
+<?php $__env->startSection('title'); ?>
     <title>Manhattan</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('header')
-    {{-- * -------------------------------------------------------------------------------- --}}
-    {{-- *                                   start header                                   --}}
-    {{-- * -------------------------------------------------------------------------------- --}}
+<?php $__env->startSection('header'); ?>
+    
+    
+    
     <section id="cta" class="section section_head ">
 
         <div id="carouselExampleIndicators" class="carousel slide img_container">
             <div class="carousel-inner wow bounce"  data-wow-delay="0.05s">
                 <div class="carousel-item carousel_height h-100  active img_about">
                     <img class="d-block h-100 w-100" galleryimg="no"
-                    src="{{$article->image}}"
+                    src="<?php echo e($article->image); ?>"
                         alt="First slide">
                 </div>
             </div>
         </div>
     </section>
-    {{-- * -------------------------------------------------------------------------------- --}}
-    {{-- *                                    end header                                    --}}
-    {{-- * -------------------------------------------------------------------------------- --}}
-@endsection
+    
+    
+    
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section id="cta" class="section">
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 layerIndex d-lg-block">
             <div class="sidebar">
@@ -58,171 +56,169 @@
             </div>
 
         </div>
-        {{-- * -------------------------------------------------------------------------------- --}}
-        {{-- *                                   start content                                  --}}
-        {{-- * -------------------------------------------------------------------------------- --}}
+        
+        
+        
 
         <div class="container " id="container_contact">
 
-            @include('website.layout.link')
+            <?php echo $__env->make('website.layout.link', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             <div class="row">
 
                 <div class="col-12 text-center p-4">
 
                     <h2 style="color: black">
-                        {{$article->title_en}}
-                    </h2>       
+                        <?php echo e($article->title_en); ?>
+
+                    </h2>
                 </div>
                 <div class="row d-flex justify-content-center ">
                     <div class="col-12 col-lg-8  wow bounce" data-wow-delay="0.01s">
                         <!-- Right third with an image -->
-                        <img class="w-100 p-2" src="{{ asset('images/manhattan/manhattan.jpg') }}"
+                        <img class="w-100 p-2" src="<?php echo e(asset('images/manhattan/manhattan.jpg')); ?>"
                             class="img-fluid" alt="Article Image">
                         <small class="text-center d-block"></small>
                     </div>
                 </div>
 
                 <div class="col-lg-12 my-3 wow bounce">
-                    {!!$article->description_en!!}
+                    <?php echo $article->description_en; ?>
+
                 </div>
             </div>
 
 
 
 
-                @foreach ($article->articleDescriptions as $descriptions)
-                @if($descriptions->style == 'right')
+                <?php $__currentLoopData = $article->articleDescriptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $descriptions): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($descriptions->style == 'right'): ?>
                 <div class="row my-5 py-5
-                 @if ( $descriptions->aria==1)
+                 <?php if( $descriptions->aria==1): ?>
                     tiko
-                @endif" >
-                @if($descriptions->title_en !=null)
+                <?php endif; ?>" >
+                <?php if($descriptions->title_en !=null): ?>
                 <div class="col-lg-12 my-3 wow bounce">
                     <h3>
-                        {{$descriptions->title_en}}
+                        <?php echo e($descriptions->title_en); ?>
+
                     </h3>
                 </div>
-                @endif
+                <?php endif; ?>
                     <!-- First Row -->
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-12 col-lg-8 data-wow-delay="0.1s"">
-                                {!!$descriptions->description_en!!}
+                                <?php echo $descriptions->description_en; ?>
+
                             </div>
                             <div class="col-12 col-lg-4 wow fadeInLeft" data-wow-delay="0.2s">
-                                @foreach ( $descriptions->imageArticleDescriptions as $imageArticleDescriptions)
-                                {{-- //class="w-100 h-75 p-2" --}}
+                                <?php $__currentLoopData = $descriptions->imageArticleDescriptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imageArticleDescriptions): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                
                                 <img
-                                    src="{{$imageArticleDescriptions->image}}"
+                                    src="<?php echo e($imageArticleDescriptions->image); ?>"
                                     class="img-fluid" alt="Article Image">
                                 <small class="text-center d-block">Empire state building</small>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                @elseif($descriptions->style == 'up')
+                <?php elseif($descriptions->style == 'up'): ?>
                 <div class="row
-                @if ( $descriptions->aria==1)
+                <?php if( $descriptions->aria==1): ?>
                     tiko
-                @endif">
+                <?php endif; ?>">
                     <div class="col-lg-12">
                         <div class="row">
-                            @foreach ( $descriptions->imageArticleDescriptions as $imageArticleDescriptions)
+                            <?php $__currentLoopData = $descriptions->imageArticleDescriptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imageArticleDescriptions): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-12 col-lg-4 mx-auto wow bounce"  data-wow-delay="0.3s">
                                 <!-- Centered image with text -->
                                 <img class="w-100 h-75 p-2"
-                                    src="{{$imageArticleDescriptions->image}}"
+                                    src="<?php echo e($imageArticleDescriptions->image); ?>"
                                     class="img-fluid" alt="Article Image">
                                 <small class="d-block text-center">Metropolitan museum</small>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
                 <div class="row tiko">
-                    @if($descriptions->title_en !=null)
+                    <?php if($descriptions->title_en !=null): ?>
                     <div class="col-lg-12 my-3 wow bounce">
                         <h3>
-                            {{$descriptions->title_en}}
+                            <?php echo e($descriptions->title_en); ?>
+
                         </h3>
                     </div>
-                    @endif
-                    @if($descriptions->description_en !=null)
+                    <?php endif; ?>
+                    <?php if($descriptions->description_en !=null): ?>
                     <div class="col-lg-12 wow bounce"  data-wow-delay="0.1s">
-                        {!!$descriptions->description_en!!}
+                        <?php echo $descriptions->description_en; ?>
+
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
-                {{-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            @foreach ( $descriptions->imageArticleDescriptions as $imageArticleDescriptions)
-                            <div class="col-12 col-lg-4 mx-auto wow bounce"  data-wow-delay="0.3s">
-                                <!-- Centered image with text -->
-                                <img class="w-100 h-75 p-2"
-                                    src="{{$imageArticleDescriptions->image}}"
-                                    class="img-fluid" alt="Article Image">
-                                <small class="d-block text-center">Metropolitan museum</small>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div> --}}
-                @elseif($descriptions->style == 'down')
+                
+                <?php elseif($descriptions->style == 'down'): ?>
                 <div class="row
-                @if ( $descriptions->aria===1)
+                <?php if( $descriptions->aria===1): ?>
                     tiko
-                @endif  my-5   ">
-                    @if($descriptions->title_en !=null)
+                <?php endif; ?>  my-5   ">
+                    <?php if($descriptions->title_en !=null): ?>
                     <div class="col-lg-12 my-3 wow bounce">
                         <h3>
-                            {{$descriptions->title_en}}
+                            <?php echo e($descriptions->title_en); ?>
+
                         </h3>
                     </div>
-                    @endif
-                    @if($descriptions->description_en !=null)
+                    <?php endif; ?>
+                    <?php if($descriptions->description_en !=null): ?>
                     <div class="col-lg-12 wow bounce"  data-wow-delay="0.1s">
-                        {!!$descriptions->description_en!!}
+                        <?php echo $descriptions->description_en; ?>
+
                     </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
-                            @foreach ( $descriptions->imageArticleDescriptions as $imageArticleDescriptions)
+                            <?php $__currentLoopData = $descriptions->imageArticleDescriptions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $imageArticleDescriptions): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-12 col-lg-4 mx-auto wow bounce"  data-wow-delay="0.3s">
                                 <!-- Centered image with text -->
                                 <img class="w-100 h-75 p-2"
-                                    src="{{$imageArticleDescriptions->image}}"
+                                    src="<?php echo e($imageArticleDescriptions->image); ?>"
                                     class="img-fluid" alt="Article Image">
                                 <small class="d-block text-center">Metropolitan museum</small>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
-                @else
+                <?php else: ?>
                 <div class="row
-                @if ( $descriptions->aria==1)
+                <?php if( $descriptions->aria==1): ?>
                     tiko
-                @endif">
+                <?php endif; ?>">
                     <div class="col-lg-12 my-3 wow bounce">
                         <h3>
-                           {{$descriptions->title_en}}
+                           <?php echo e($descriptions->title_en); ?>
+
                         </h3>
                     </div>
 
                     <div class="col-lg-12 "  data-wow-delay="0.1s">
-                        {!!$descriptions->description_en!!}
+                        <?php echo $descriptions->description_en; ?>
+
                     </div>
                 </div>
-                @endif
-                @endforeach
-                @include('website.layout.link')
+                <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php echo $__env->make('website.layout.link', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
         </div>
     </section>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('website.layout.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Article_new\resources\views/website/manhattan/manhattan.blade.php ENDPATH**/ ?>
