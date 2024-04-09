@@ -32,6 +32,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
         Article::create([
             'title_en'=>$request->title_en,
             'description_en'=>$request->description_en,
